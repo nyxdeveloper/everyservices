@@ -1,0 +1,22 @@
+version: '3.3'
+
+services:
+  web:
+    build: ../everyservices
+    command: /usr/local/bin/uwsgi --ini uwsgi.ini
+    volumes: # монтируем директории, слева директории на основной машине, справа - куда они монтируются в контейнере
+      - ../everyservices/:/usr/src/everyservices/
+    ports:
+      - '80:80'
+    env_file:
+      - ./.env.prod
+  db:
+    image: postgres:latest
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=dbadmin
+      - POSTGRES_PASSWORD=root
+      - POSTGRES_DB=everyservices
+volumes:
+  postgres_data:

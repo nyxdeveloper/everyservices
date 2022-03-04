@@ -1,0 +1,10 @@
+django
+djangorestframework
+djangorestframework-jwt
+django-filter
+uwsgi
+django-grappelli
+psycopg2-binary
+requests
+Pillow
+django-cors-headers

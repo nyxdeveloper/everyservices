@@ -1,0 +1,9 @@
+{% if times|length == 0 %}
+    <h3>На данную дату время занято</h3>
+{% else %}
+    {% for time in times %}
+        <input value="{{ time.time }}" type="radio" class="btn-check" name="time" id="option{{ forloop.counter }}"
+               autocomplete="off">
+        <label style="margin: 5px" class="btn btn-default" for="option{{ forloop.counter }}">{{ time.time }}</label>
+    {% endfor %}
+{% endif %}
